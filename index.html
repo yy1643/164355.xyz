@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨杪杪的个人主页</title>
+    <!-- 引入 Remix Icon 图标库 -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--apple-font);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 
+           【高级感核心】
+           在纯白背景下，为了让毛玻璃的“磨砂”和“折射”看得见，
+           我们在背后放两个淡淡的彩色氛围气泡。透过卡片时，它们会被完美模糊。
+        */
+        .bg-glow-1 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(147, 197, 253, 0.4) 0%, rgba(255,255,255,0) 70%);
+            top: 25%;
+            left: 30%;
+            z-index: 1;
+        }
+        .bg-glow-2 {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(244, 163, 163, 0.3) 0%, rgba(255,255,255,0) 70%);
+            bottom: 20%;
+            right: 28%;
+            z-index: 1;
+        }
+
+        /* 苹果官方风格高级毛玻璃卡片 */
+        .glass-card {
+            position: relative;
+            z-index: 2; /* 压在氛围气泡上方 */
+            background: rgba(255, 255, 255, 0.45); /* 降低透明度让背后的色彩透过来 */
+            backdrop-filter: blur(35px) saturate(200%); /* 极高的模糊度和色彩饱和度恢复 */
+            -webkit-backdrop-filter: blur(35px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.6); /* 亮白色的高光边缘 */
+            border-radius: 32px;
+            padding: 40px;
+            width: 100%;
+            max-width: 460px;
+            /* 复合多层阴影，营造出悬浮于白底之上的真实物理质感 */
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.01),
+                0 12px 30px rgba(0, 0, 0, 0.04),
+                0 40px 80px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            color: #1d1d1f;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.04),
+                0 50px 100px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 头像组件 */
+        .avatar-container {
+            position: relative;
+            width: 105px;
+            height: 105px;
+            margin: 0 auto 24px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        /* 苹果绿色状态灯 */
+        .status-dot {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 15px;
+            height: 15px;
+            background-color: #34c759;
+            border: 2.5px solid #ffffff;
+            border-radius: 50%;
+        }
+
+        /* 文本 */
+        .name {
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #6e6e73;
+            font-weight: 400;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+
+        /* 列表项链接 */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        /* 按钮同样做微弱的毛玻璃处理，拉开层次 */
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            text-decoration: none;
+            color: #1d1d1f;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.02);
+            padding-left: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .link-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .link-left i {
+            font-size: 20px;
+            color: #0071e3; /* 苹果经典蓝 */
+        }
+
+        .link-item .ri-arrow-right-s-line {
+            color: #86868b;
+            font-size: 18px;
+        }
+
+        /* 页脚 */
+        .footer {
+            font-size: 11px;
+            color: #86868b;
+            letter-spacing: 0.2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 后台隐约的色彩微光，专为衬托毛玻璃质感 -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- 主卡片 -->
+    <div class="glass-card">
+        
+        <!-- 头像区域 -->
+        <div class="avatar-container">
+            <!-- 可以将 src 替换为你自己的个人头像链接 -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="avatar">
+            <div class="status-dot"></div>
+        </div>
+
+        <!-- 个人信息 -->
+        <h1 class="name">杨杪杪</h1>
+        <p class="bio">求职意向：视频剪辑<br>保持渴望，保持谦卑。</p>
+
+        <!-- 导航链接 -->
+        <div class="links-container">
+            
+            <a href="portfolio.html" target="_blank" class="link-item">
+                <div class="link-left">
+                    <i class="ri-pages-line"></i>
+                    <span>个人作品集 / Portfolio</span>
+                </div>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+
+            <a href="#" class="link-item">
+                <div class="link-left">
+                    <i class="ri-github-fill"></i>
+                    <span>开源主页 / GitHub</span>
+                </div>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+
+            <a href="#" class="link-item">
+                <div class="link-left">
+                    <i class="ri-bubble-chart-line"></i>
+                    <span>一些想法 / Blog</span>
+                </div>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+
+            <a href="mailto:your-email@icloud.com" class="link-item">
+                <div class="link-left">
+                    <i class="ri-mail-open-line"></i>
+                    <span>联系我 / Email</span>
+                </div>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+
+        </div>
+
+        <!-- 页脚 -->
+        <p class="footer">© 2026 杨杪杪 </p>
+        
+    </div>
+
+</body>
+</html>
