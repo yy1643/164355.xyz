@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探寻设计的极简之道 / Blog Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --apple-blue: #0071e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--apple-font);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* 延续主页的氛围微光，衬托毛玻璃 */
+        .bg-glow-1 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, rgba(255,255,255,0) 70%);
+            top: 10%;
+            left: -100px;
+            z-index: 1;
+        }
+        .bg-glow-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(244, 163, 163, 0.25) 0%, rgba(255,255,255,0) 70%);
+            bottom: 10%;
+            right: -100px;
+            z-index: 1;
+        }
+
+        /* 容器 */
+        .post-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* 返回列表按钮 */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #6e6e73;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: color 0.2s ease;
+        }
+        .back-btn:hover {
+            color: var(--apple-blue);
+        }
+
+        /* 毛玻璃文章卡片 */
+        .post-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            margin-bottom: 60px;
+            color: #1d1d1f;
+        }
+
+        /* 文章头部 */
+        .post-header {
+            margin-bottom: 32px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 24px;
+        }
+        .post-date {
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .post-title {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        /* 文章内容 */
+        .post-content {
+            font-size: 16px;
+            color: #333336;
+            line-height: 1.8;
+        }
+        .post-content p {
+            margin-bottom: 24px;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: auto;
+            font-size: 11px;
+            color: #86868b;
+            text-align: center;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="post-container">
+
+        <a href="blog.html" class="back-btn">
+            <i class="ri-arrow-left-s-line"></i> 返回列表
+        </a>
+
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-date">2026年5月10日</div>
+                <h1 class="post-title">探寻设计的极简之道</h1>
+            </div>
+
+            <div class="post-content">
+                <p>在繁杂的世界中，极简不仅仅是一种视觉风格，更是一种生活态度。在这篇文章中，我分享了如何通过做减法，让设计回归本质的几点思考。</p>
+                <p>设计中的“少即是多”（Less is more）常被提及，但要真正做到却并不容易。往往我们在创作时总是想要添加更多的元素、色彩和特效，试图让作品看起来更加丰富。然而，真正的功力在于克制。当我们去掉那些不必要的装饰，留白自然凸显，内容本身成为了唯一的焦点。</p>
+                <p>在界面设计上，留白并非真的是“空白”，而是一种隐形的结构线。它可以引导用户的视觉流向，降低认知负荷，让用户在操作时感到轻松愉悦。这也是为什么诸如苹果等公司的设计总能带给人高级和优雅的感受。他们深谙留白的艺术，懂得在信息爆炸的时代，赋予用户呼吸的空间。</p>
+                <p>生活亦是如此。极简生活不是要家徒四壁，而是要清楚什么才是对自己真正重要的，将精力集中在核心事物上。设计源于生活，当我们在生活中学会了做减法，我们的设计自然也会呈现出一种通透与从容。</p>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="footer">© 2026 杨杪杪. Designed with Apple Style.</p>
+
+</body>
+</html>
