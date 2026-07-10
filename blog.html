@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨杪杪的一些想法 / Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --apple-blue: #0071e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--apple-font);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 延续主页的氛围微光，衬托毛玻璃 */
+        .bg-glow-1 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, rgba(255,255,255,0) 70%);
+            top: 10%;
+            left: -100px;
+            z-index: 1;
+        }
+        .bg-glow-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(244, 163, 163, 0.25) 0%, rgba(255,255,255,0) 70%);
+            bottom: 10%;
+            right: -100px;
+            z-index: 1;
+        }
+
+        /* 容器 */
+        .blog-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* 返回首页按钮 */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #6e6e73;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: color 0.2s ease;
+        }
+        .back-btn:hover {
+            color: var(--apple-blue);
+        }
+
+        /* 页头标题 */
+        .header {
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        .header p {
+            font-size: 16px;
+            color: #6e6e73;
+        }
+
+        /* 博客列表布局 */
+        .blog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        /* 毛玻璃博客卡片 */
+        .blog-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        /* 卡片文字内容 */
+        .card-date {
+            font-size: 13px;
+            color: #86868b;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+        .card-desc {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .card-footer {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--apple-blue);
+        }
+        .card-footer i {
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+        .blog-card:hover .card-footer i {
+            transform: translateX(3px);
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: auto;
+            font-size: 11px;
+            color: #86868b;
+            text-align: center;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="blog-container">
+
+        <a href="index.html" class="back-btn">
+            <i class="ri-arrow-left-s-line"></i> 返回主页
+        </a>
+
+        <div class="header">
+            <h1>一些想法</h1>
+            <p>分享生活感悟、技术心得与设计灵感。</p>
+        </div>
+
+        <div class="blog-list">
+
+            <a href="#" class="blog-card">
+                <div class="card-date">2026年5月10日</div>
+                <h2 class="card-title">探寻设计的极简之道</h2>
+                <p class="card-desc">在繁杂的世界中，极简不仅仅是一种视觉风格，更是一种生活态度。在这篇文章中，我分享了如何通过做减法，让设计回归本质的几点思考。</p>
+                <div class="card-footer">
+                    <span>阅读全文</span> <i class="ri-arrow-right-s-line"></i>
+                </div>
+            </a>
+
+            <a href="#" class="blog-card">
+                <div class="card-date">2026年4月22日</div>
+                <h2 class="card-title">从灵感到实现：我的开发流程</h2>
+                <p class="card-desc">记录了我通常如何将一个闪念或灵感，一步步转化为实际的开发原型，以及在这个过程中我所使用到的工具与方法论。</p>
+                <div class="card-footer">
+                    <span>阅读全文</span> <i class="ri-arrow-right-s-line"></i>
+                </div>
+            </a>
+
+            <a href="#" class="blog-card">
+                <div class="card-date">2026年3月15日</div>
+                <h2 class="card-title">关于色彩与情感的关联</h2>
+                <p class="card-desc">色彩能够直接影响人的情绪与感知。本文探讨了在数字产品设计中，不同的色彩搭配如何传达出不同的品牌温度与使用体验。</p>
+                <div class="card-footer">
+                    <span>阅读全文</span> <i class="ri-arrow-right-s-line"></i>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <p class="footer">© 2026 杨杪杪. Designed with Apple Style.</p>
+
+</body>
+</html>
