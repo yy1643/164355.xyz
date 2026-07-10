@@ -416,6 +416,13 @@ body {
     align-items: flex-start;
     gap: 16px;
     text-decoration: none;
+    color: #000000;
+}
+
+.social-item span,
+.social-item i {
+    color: #000000;
+    text-decoration: none;
 }
 
 .info-icon {
@@ -442,10 +449,6 @@ body {
     font-size: 14px;
     color: #6e6e73;
     transition: color 0.2s ease;
-}
-
-.social-item:hover .info-text p {
-    color: var(--apple-blue);
 }
 
 /* --- Blog Post Pages --- */
