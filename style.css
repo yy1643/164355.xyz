@@ -499,3 +499,107 @@ body {
 .post-content p {
     margin-bottom: 20px;
 }
+
+/* --- Glassmorphism Toast Notification --- */
+.glass-toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+
+    /* 玻璃拟态基础样式，与卡片保持一致 */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(35px) saturate(200%);
+    -webkit-backdrop-filter: blur(35px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+
+    /* 柔和阴影，增加悬浮感 */
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 12px 24px rgba(0, 0, 0, 0.08);
+
+    padding: 16px 24px;
+    color: #1d1d1f;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    /* 初始状态：移出屏幕外并透明 */
+    transform: translateX(120%);
+    opacity: 0;
+
+    /* 添加平滑的过渡动画 */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    pointer-events: none; /* 避免遮挡点击 */
+}
+
+/* 显示 Toast 时的类名 */
+.glass-toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Contact Form Styles */
+.contact-form {
+    margin-top: 40px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 32px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d1d1f;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #1d1d1f;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: var(--apple-blue);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: var(--apple-blue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+    background: #0077ED;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
