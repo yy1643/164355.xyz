@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系杨杪杪 / Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --apple-blue: #0071e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--apple-font);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 延续主页的氛围微光，衬托毛玻璃 */
+        .bg-glow-1 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, rgba(255,255,255,0) 70%);
+            top: 20%;
+            left: -50px;
+            z-index: 1;
+        }
+        .bg-glow-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(244, 163, 163, 0.25) 0%, rgba(255,255,255,0) 70%);
+            bottom: 20%;
+            right: -50px;
+            z-index: 1;
+        }
+
+        /* 容器 */
+        .contact-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* 返回首页按钮 */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #6e6e73;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: color 0.2s ease;
+        }
+        .back-btn:hover {
+            color: var(--apple-blue);
+        }
+
+        /* 页头标题 */
+        .header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        .header p {
+            font-size: 16px;
+            color: #6e6e73;
+        }
+
+        /* 毛玻璃卡片 */
+        .contact-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            margin-bottom: 40px;
+        }
+
+        /* 社交信息列表 */
+        .social-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .social-item:hover {
+            color: var(--apple-blue);
+        }
+
+        .social-item i {
+            font-size: 20px;
+            color: var(--apple-blue);
+            width: 24px;
+            text-align: center;
+        }
+
+        /* 表单样式 */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #515154;
+            margin-left: 4px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.6);
+            font-size: 15px;
+            color: #1d1d1f;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--apple-blue);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--apple-blue);
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            background: #0077ed;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: auto;
+            font-size: 11px;
+            color: #86868b;
+            text-align: center;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="contact-container">
+
+        <a href="index.html" class="back-btn">
+            <i class="ri-arrow-left-s-line"></i> 返回主页
+        </a>
+
+        <div class="header">
+            <h1>联系我</h1>
+            <p>随时欢迎交流，探讨合作机会或分享有趣的想法。</p>
+        </div>
+
+        <div class="contact-card">
+
+            <div class="social-info">
+                <a href="mailto:your-email@icloud.com" class="social-item">
+                    <i class="ri-mail-fill"></i>
+                    <span>your-email@icloud.com</span>
+                </a>
+                <a href="#" class="social-item">
+                    <i class="ri-wechat-fill"></i>
+                    <span>WeChat: yangmiaomiao_2026</span>
+                </a>
+                <a href="#" class="social-item">
+                    <i class="ri-twitter-x-line"></i>
+                    <span>@yangmiaomiao</span>
+                </a>
+            </div>
+
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('消息已发送！谢谢联系。');">
+                <div class="form-group">
+                    <label for="name">称呼</label>
+                    <input type="text" id="name" class="form-control" placeholder="您的名字" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">联系邮箱</label>
+                    <input type="email" id="email" class="form-control" placeholder="您的邮箱地址" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">内容</label>
+                    <textarea id="message" class="form-control" placeholder="想对我说点什么..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">发送消息</button>
+            </form>
+
+        </div>
+
+    </div>
+
+    <p class="footer">© 2026 杨杪杪. Designed with Apple Style.</p>
+
+</body>
+</html>
